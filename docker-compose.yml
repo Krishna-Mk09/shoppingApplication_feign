@@ -36,8 +36,6 @@ services:
       - mysqlService
       - cloudapiservice
 
-
-
   mysqlService:
     image: mysql:latest
     container_name: mysqlService
@@ -60,6 +58,14 @@ services:
     ports:
       - 9005:9005
 
+  eureka-service:
+    container_name: containerEureka
+    build: EurekaServer/
+    restart: always
+    networks:
+      - mynetwork
+    ports:
+      - 8761:8761
 
 
 networks:
