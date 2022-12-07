@@ -12,6 +12,7 @@
     <modules>
         <module>bej_c2_s3_rest_api_mongodb_pc_1-master</module>
         <module>userauthentication-demo-by-mam-master</module>
+        <module>springAPIGateWayService</module>
     </modules>
 
     <packaging>pom</packaging>

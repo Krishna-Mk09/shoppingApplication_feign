@@ -11,6 +11,7 @@ services:
       - 8086:8086
     depends_on:
       - mongoService
+      - cloudapiservice
 
 
   mongoService:
@@ -21,7 +22,8 @@ services:
     networks:
       - mynetwork
 
-  authentication-service:
+
+  UserAuthenticate:
     image: authentication_image
     container_name: authentication-service
     build: userauthentication-demo-by-mam-master/
@@ -32,6 +34,8 @@ services:
       - 8080:8080
     depends_on:
       - mysqlService
+      - cloudapiservice
+
 
 
   mysqlService:
@@ -46,6 +50,15 @@ services:
       MYSQL_USERNAME: root
       MYSQL_PASSWORD: root
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+
+  cloudapiservice:
+    container_name: cloudapi
+    build: springAPIGateWayService/
+    restart: always
+    networks:
+      - mynetwork
+    ports:
+      - 9005:9005
 
 
 
