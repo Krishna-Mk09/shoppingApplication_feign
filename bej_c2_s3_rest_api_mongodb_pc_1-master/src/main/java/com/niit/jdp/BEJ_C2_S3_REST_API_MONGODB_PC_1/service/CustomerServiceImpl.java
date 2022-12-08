@@ -11,6 +11,7 @@ package com.niit.jdp.BEJ_C2_S3_REST_API_MONGODB_PC_1.service;
 import com.niit.jdp.BEJ_C2_S3_REST_API_MONGODB_PC_1.domain.Customer;
 import com.niit.jdp.BEJ_C2_S3_REST_API_MONGODB_PC_1.exception.CustomerAlreadyExists;
 import com.niit.jdp.BEJ_C2_S3_REST_API_MONGODB_PC_1.exception.CustomerNotExists;
+import com.niit.jdp.BEJ_C2_S3_REST_API_MONGODB_PC_1.proxy.CustomerProxy;
 import com.niit.jdp.BEJ_C2_S3_REST_API_MONGODB_PC_1.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,13 +23,13 @@ import java.util.Optional;
 public class CustomerServiceImpl implements ICustomerService {
     // A private variable of type CustomerRepository.
     private final CustomerRepository customerRepository;
-
+    private CustomerProxy customerProxy;
     // A constructor injection.
     @Autowired
-    public CustomerServiceImpl(CustomerRepository customerRepository) {
+    public CustomerServiceImpl(CustomerRepository customerRepository, CustomerProxy customerProxy) {
         this.customerRepository = customerRepository;
+        this.customerProxy = customerProxy;
     }
-
     /**
      * If the customer already exists, throw an exception, otherwise save the customer.
      *
@@ -40,6 +41,7 @@ public class CustomerServiceImpl implements ICustomerService {
         if (customerRepository.findById(customer.getCustomerId()).isPresent()) {
             throw new CustomerAlreadyExists();
         }
+        customerProxy.saveUser(customer);
         return customerRepository.save(customer);
     }
     /**

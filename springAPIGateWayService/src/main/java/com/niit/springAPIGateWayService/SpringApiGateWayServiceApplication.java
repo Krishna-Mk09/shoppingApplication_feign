@@ -20,7 +20,7 @@ public class SpringApiGateWayServiceApplication {
 	public RouteLocator myRoutes(RouteLocatorBuilder builder) {
 		return builder.routes()
 				.route(p -> p
-						.path("/api/v1/**")
+						.path("/userservice/**")
 						.uri("lb://UserAuthenticate")) // use the name of the application in the uri
 
 				.route(p->p

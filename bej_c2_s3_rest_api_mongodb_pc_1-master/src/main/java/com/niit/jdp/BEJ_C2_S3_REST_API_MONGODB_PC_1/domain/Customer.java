@@ -16,15 +16,19 @@ public class Customer {
     @Id
     private int customerId;
     private String customerName;
+    private String email;
+    private String password;
     private long phoneNumber;
     private Product customerProduct;
 
     public Customer() {
     }
 
-    public Customer(int customerId, String customerName, long phoneNumber, Product customerProduct) {
+    public Customer(int customerId, String customerName, String email, String password, long phoneNumber, Product customerProduct) {
         this.customerId = customerId;
         this.customerName = customerName;
+        this.email = email;
+        this.password = password;
         this.phoneNumber = phoneNumber;
         this.customerProduct = customerProduct;
     }
@@ -45,6 +49,22 @@ public class Customer {
         this.customerName = customerName;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public long getPhoneNumber() {
         return phoneNumber;
     }
@@ -59,10 +79,5 @@ public class Customer {
 
     public void setCustomerProduct(Product customerProduct) {
         this.customerProduct = customerProduct;
-    }
-
-    @Override
-    public String toString() {
-        return "Customer{" + "customerId=" + customerId + ", customerName='" + customerName + '\'' + ", PhoneNumber=" + phoneNumber + ", customerProduct=" + customerProduct + '}';
     }
 }

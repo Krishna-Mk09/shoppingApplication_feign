@@ -9,8 +9,6 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-
-
     <artifactId>BEJ_C2_S3_REST_API_MONGODB_PC_1</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <description>project for Spring Boot</description>
@@ -28,6 +26,10 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
     </dependencies>
     <dependencyManagement>
